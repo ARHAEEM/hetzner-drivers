@@ -1,0 +1,433 @@
+ iavf FreeBSD* Base Driver for Adaptive Virtual Functions
+========================================================
+August 5, 2022
+
+Contents
+========
+
+- Overview
+- Identifying Your Adapter
+- The VF Driver
+- Building and Installation
+- Configuration and Tuning
+- Known Issues/Troubleshooting
+
+
+Overview
+========
+This file describes the FreeBSD* driver for Intel(R) Ethernet. This driver has
+been developed for use with all community-supported versions of FreeBSD.
+
+For questions related to hardware requirements, refer to the documentation
+supplied with your Intel Ethernet Adapter. All hardware requirements listed
+apply to use with FreeBSD.
+
+The associated Physical Function (PF) drivers for this VF driver are:
+- ice
+- ixl
+
+
+Identifying Your Adapter
+========================
+This driver is compatible with virtual functions bound to devices based on the
+following:
+  * Intel(R) Ethernet Controller E810-C
+  * Intel(R) Ethernet Controller E810-XXV
+  * Intel(R) Ethernet Connection E822-C
+  * Intel(R) Ethernet Connection E822-L
+  * Intel(R) Ethernet Connection E823-C
+  * Intel(R) Ethernet Connection E823-L
+  * Intel(R) Ethernet Controller I710
+  * Intel(R) Ethernet Controller X710
+  * Intel(R) Ethernet Controller XL710
+  * Intel(R) Ethernet Network Connection X722
+  * Intel(R) Ethernet Controller XXV710
+  * Intel(R) Ethernet Controller V710
+
+For information on how to identify your adapter, and for the latest Intel
+network drivers, refer to the Intel Support website:
+http://www.intel.com/support
+
+
+The VF Driver
+=============
+The VF driver is normally used in a virtualized environment where a host driver
+manages SRIOV, and provides a VF device to the guest.
+
+In the FreeBSD guest, the iavf driver would be loaded and will function using
+the VF device assigned to it.
+
+The VF driver provides most of the same functionality as the core driver, but
+is actually a subordinate to the host. Access to many controls is accomplished
+by a request to the host via what is called the "Admin queue." These are
+startup and initialization events, however; once in operation, the device is
+self-contained and should achieve near native performance.
+
+Some notable limitations of the VF environment:
+  * The PF can configure the VF to allow promiscuous mode, when using iovctl.
+  * Media info is not available from the PF, so it will always appear as auto.
+
+
+Adaptive Virtual Function
+-------------------------
+Adaptive Virtual Function (AVF) allows the virtual function driver, or VF, to
+adapt to changing feature sets of the physical function driver (PF) with which
+it is associated. This allows system administrators to update a PF without
+having to update all the VFs associated with it. All AVFs have a single common
+device ID and branding string.
+
+AVFs have a minimum set of features known as "base mode," but may provide
+additional features depending on what features are available in the PF with
+which the AVF is associated. The following are base mode features:
+
+- 4 Queue Pairs (QP) and associated Configuration Status Registers (CSRs)
+  for Tx/Rx
+- iavf descriptors and ring format
+- Descriptor write-back completion
+- 1 control queue, with iavf descriptors, CSRs and ring format
+- 5 MSI-X interrupt vectors and corresponding iavf CSRs
+- 1 Interrupt Throttle Rate (ITR) index
+- 1 Virtual Station Interface (VSI) per VF
+- 1 Traffic Class (TC), TC0
+- Receive Side Scaling (RSS) with 64 entry indirection table and key,
+  configured through the PF
+- 1 unicast MAC address reserved per VF
+- 8 MAC address filters for each VF on an Intel(R) Ethernet 800 Series devices
+- 16 MAC address filters for each VF on an Intel(R) Ethernet 700 Series device
+- Stateless offloads - non-tunneled checksums
+- AVF device ID
+- HW mailbox is used for VF to PF communications (including on Windows)
+
+
+Building and Installation
+=========================
+NOTE: This driver package is to be used only as a standalone archive and the
+user should not attempt to incorporate it into the kernel source tree.
+
+In the instructions below, x.x.x is the driver version as indicated in the name
+of the driver tar file.
+
+1. Move the base driver tar file to the directory of your choice. For
+   example, use /home/username/iavf or /usr/local/src/iavf.
+
+2. Untar/unzip the archive:
+
+   # tar xzf iavf-x.x.x.tar.gz
+
+This will create the iavf-x.x.x directory.
+
+3. To install man page:
+
+   # cd iavf-x.x.x
+   # gzip -c iavf.4 > /usr/share/man/man4/iavf.4.gz
+
+4. To load the driver onto a running system:
+
+   # cd iavf-x.x.x/src
+   # make
+   # kldload ./if_iavf.ko
+
+To install the driver without using iflib:
+   # cd iavf-x.x.x/src
+   # make legacy
+   # kldload ./if_iavf.ko
+
+5. To assign an IP address to the interface, enter the following,
+   where X is the interface number for the device:
+
+   # ifconfig iavfX <IP_address>
+
+6. Verify that the interface works. Enter the following, where <IP_address>
+   is the IP address for another machine on the same subnet as the interface
+   that is being tested:
+
+   # ping <IP_address>
+
+7. If you want the driver to load automatically when the system is booted:
+
+   # cd iavf-x.x.x
+   # make
+   # make install
+
+Edit /boot/loader.conf, and add the following line:
+   if_iavf_load="YES"
+
+Edit /etc/rc.conf, and create the appropriate ifconfig_iavfX entry:
+
+   ifconfig_iavfX="<ifconfig_settings>"
+
+Example usage:
+   ifconfig_iavf0="inet 192.168.10.1 netmask 255.255.255.0"
+
+    NOTE: For assistance, see the ifconfig man page.
+
+
+Configuration and Tuning
+========================
+
+Important System Configuration Changes
+--------------------------------------
+- Change the file /etc/sysctl.conf, and add the line:
+
+  hw.intr_storm_threshold: 0 (the default is 1000)
+
+- Best throughput results are seen with a large MTU; use 9706 if possible.
+  The default number of descriptors per ring is 1024. Increasing this may
+  improve performance, depending on your use case.
+
+
+Configuring for iflib
+---------------------
+Iflib is a common framework for network interface drivers for FreeBSD that uses
+a shared set of sysctl names. The iflib driver works best in FreeBSD 11.3 and
+later.
+
+See the iflib man page for more information.
+
+
+Jumbo Frames
+------------
+Jumbo Frames support is enabled by changing the Maximum Transmission Unit (MTU)
+to a value larger than the default value of 1500.
+
+Use the ifconfig command to increase the MTU size. For example, enter the
+following where X is the interface number:
+
+# ifconfig iavfX mtu 9000
+
+To confirm an interface's MTU value, use the ifconfig command.
+
+To confirm the MTU used between two specific devices, use:
+
+# route get <destination_IP_address>
+
+NOTE: The maximum MTU setting for jumbo frames is 9706. This corresponds to the
+maximum jumbo frame size of 9728 bytes.
+
+NOTE: This driver will attempt to use multiple page sized buffers to receive
+each jumbo packet. This should help to avoid buffer starvation issues when
+allocating receive packets.
+
+NOTE: Packet loss may have a greater impact on throughput when you use jumbo
+frames. If you observe a drop in performance after enabling jumbo frames,
+enabling flow control may mitigate the issue.
+
+
+VLANS
+-----
+To create a new VLAN interface:
+
+# ifconfig <vlan_name> create
+
+To associate the VLAN interface with a physical interface and assign a VLAN ID,
+IP address, and netmask:
+
+# ifconfig <vlan_name> <ip_address> netmask <subnet_mask> vlan <vlan_id>
+vlandev <physical_interface>
+
+Example:
+
+# ifconfig vlan10 10.0.0.1 netmask 255.255.255.0 vlan 10 vlandev iavf0
+
+In this example, all packets will be marked on egress with 802.1Q VLAN tags,
+specifying a VLAN ID of 10.
+
+To remove a VLAN interface:
+
+# ifconfig <vlan_name> destroy
+
+
+Checksum Offload
+----------------
+Checksum offloading supports both TCP and UDP packets and is supported for both
+transmit and receive.
+
+Checksum offloading can be enabled or disabled using ifconfig.
+
+To enable checksum offloading:
+
+# ifconfig iavfX rxcsum rxcsum6
+# ifconfig iavfX txcsum txcsum6
+
+To disable checksum offloading:
+
+# ifconfig iavfX -rxcsum -rxcsum6
+# ifconfig iavfX -txcsum -txcsum6
+
+To confirm the current setting:
+
+# ifconfig iavfX
+
+Look for the presence or absence of the following line:
+  options=3 <RXCSUM,TXCSUM,RXCSUM6,TXCSUM6>
+
+See the ifconfig man page for further information.
+
+
+TSO
+---
+TSO (TCP Segmentation Offload) supports both IPv4 and IPv6. TSO can be disabled
+and enabled using the ifconfig utility or sysctl.
+
+NOTE: TSO requires Tx checksum, if Tx checksum is disabled, TSO will also be
+disabled.
+
+To enable/disable TSO in the stack:
+
+# sysctl net.inet.tcp.tso=0 (or 1 to enable it)
+
+Doing this disables/enables TSO in the stack and affects all installed adapters.
+
+To disable BOTH TSO IPv4 and IPv6, where X is the number of the interface in
+use:
+
+# ifconfig iavfX -tso
+
+To enable BOTH TSO IPv4 and IPv6:
+
+# ifconfig iavfX tso
+
+You can also enable/disable IPv4 TSO or IPv6 TSO individually. Simply replace
+tso|-tso in the above command with tso4 or tso6. For example, to disable
+TSO IPv4:
+
+# ifconfig iavfX -tso4
+
+To disable TSO IPv6:
+
+# ifconfig iavfX -tso6
+
+
+LRO
+---
+LRO (Large Receive Offload) may provide Rx performance improvement. However, it
+is incompatible with packet-forwarding workloads. You should carefully evaluate
+the environment and enable LRO when possible.
+
+To enable:
+
+# ifconfig iavfX lro
+
+It can be disabled by using:
+
+# ifconfig iavfX -lro
+
+
+Rx and Tx Descriptor Rings
+--------------------------
+Allows you to set the Rx and Tx descriptor rings independently. The tunables
+are:
+  hw.iavf.rx_ring_size
+  hw.iavf.tx_ring_size
+
+The valid range is 32-4096 in increments of 32. Use kenv to configure the
+descriptor rings. Changes will take effect on the next driver reload.
+For example:
+
+# kenv hw.iavf.rx_ring_size=1024
+# kenv hw.iavf.rx_ring_size=1280
+
+NOTE: When you are handling a large number of connections in a VF, we recommend
+setting the number of Rx descriptors to 1024 or above.
+
+You can verify the descriptor ring size by using the following sysctls:
+
+# sysctl dev.iavf.<interface #>.rx_ring_size
+# sysctl dev.iavf.<interface #>.tx_ring_size
+
+If you are using iflib, use the following sysctls instead:
+
+# sysctl dev.iavf.<interface #>.iflib.override_nrxds
+# sysctl dev.iavf.<interface #>.iflib.override_ntxds
+
+
+Link-Level Flow Control (LFC)
+-----------------------------
+The VF driver does not have access to flow control. It must be managed from the
+host side.
+
+
+Known Issues/Troubleshooting
+============================
+
+Driver Buffer Overflow Fix
+--------------------------
+The fix to resolve CVE-2016-8105, referenced in Intel SA-00069
+<https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00069&language
+id=en-fr>, is included in this and future versions of the driver.
+
+
+Network Memory Buffer Allocation
+--------------------------------
+FreeBSD may have a low number of network memory buffers (mbufs) by default. If
+your mbuf value is too low, it may cause the driver to fail to initialize
+and/or cause the system to become unresponsive. You can check to see if the
+system is mbuf-starved by running 'netstat -m'. Increase the number of mbufs by
+editing the lines below in /etc/sysctl.conf:
+
+  kern.ipc.nmbclusters
+  kern.ipc.nmbjumbop
+  kern.ipc.nmbjumbo9
+  kern.ipc.nmbjumbo16
+  kern.ipc.nmbufs
+
+The amount of memory that you allocate is system specific, and may require some
+trial and error. Also, increasing the following in /etc/sysctl.conf could help
+increase network performance:
+
+  kern.ipc.maxsockbuf
+  net.inet.tcp.sendspace
+  net.inet.tcp.recvspace
+  net.inet.udp.maxdgram
+  net.inet.udp.recvspace
+
+
+UDP Stress Test Dropped Packet Issue
+------------------------------------
+Under small packet UDP stress with the iavf driver, the system may drop UDP
+packets due to socket buffers being full. Setting the driver Intel Ethernet
+Flow Control variables to the minimum may resolve the issue. You may also try
+increasing the kernel's default buffer sizes by changing the values in
+
+  /proc/sys/net/core/rmem_default and rmem_max
+
+
+Disable LRO when routing/bridging
+---------------------------------
+LRO must be turned off when forwarding traffic.
+
+
+Throughput lower than expected
+------------------------------
+In FreeBSD 11.3, you may observe lower than expected throughput. This is due to
+an underlying OS limitation in FreeBSD 11.3. Using FreeBSD 12.0 or newer should
+resolve the issue.
+
+If your Rx throughput is lower than expected in FreeBSD 11.3 or 12.1, you can
+also adjust the iflib sysctl variable 'rx_budget.' We have seen performance
+benefits by increasing that value to at least 85. For example:
+
+# sysctl dev.iavf.0.iflib.rx_budget=85
+
+
+Support
+=======
+For general information, go to the Intel support website at:
+http://www.intel.com/support/
+
+If an issue is identified with the released source code on a supported kernel
+with a supported adapter, email the specific information related to the issue
+to freebsd@intel.com
+
+
+Copyright(c) 2018 - 2022 Intel Corporation.
+
+
+Trademarks
+==========
+Intel is a trademark or registered trademark of Intel Corporation or its
+subsidiaries in the United States and/or other countries.
+
+* Other names and brands may be claimed as the property of others.
+
+

@@ -1,0 +1,578 @@
+                        ===========================
+                        R E L E A S E    N O T E S
+                        ===========================
+
+                       QLogic Windows Installer Projects
+                       Windows 2008, Windows 2012 R2, Windows 7,
+                             Windows 8, Windows 8.1
+
+                   Copyright (c) 2002-2017 QLogic Corporation
+                            All rights reserved.
+
+
+version 5.0.80 (August 09, 2017)
+-------------------------------
+- Fixed Cont00095836 by clipping out empty folders.
+
+version 5.0.79 (July 07, 2017)
+-------------------------------
+- Updated product code for 2017E gold update. 
+
+version 5.0.78 (April 29, 2017)
+-------------------------------
+- Fix for CQ93431, CQ93432, CQ93433, CQ93428
+  
+version 5.0.77 (April 26, 2017)
+-------------------------------
+- Fix for an issue where SNMP service does not restart
+  after installing it with OEM installer.
+
+version 5.0.76 (March 25, 2017)
+-------------------------------
+- Updated Product Codes.
+
+version 5.0.75 (March 06, 2017)
+-------------------------------
+- Branched for next projects.
+
+version 5.0.53 (December 09, 2016)
+-------------------------------
+	   Problem:  Cont00090497 - Typo in text
+
+       Cause:   Legacy
+				 
+       Change:   
+	            Fixed the typo in text. 
+       Impact:   
+	        OEM Installer.
+			
+	   Problem:  Add crashdump driver support
+
+       Cause:   New feature
+				 
+       Change:   
+	            Added FCoE and iSCSI CrashDump driver support
+       Impact:   
+	        579XX driver Installer.
+			
+version 5.0.52 (November 15, 2016)
+-------------------------------
+	   Problem:  Cont00089707 - major upgrade not triggered properly
+
+       Cause:   New branch.
+				 
+       Change:   
+	            New request. 
+       Impact:   
+	        579XX, driver installer.
+			
+version 5.0.51 (October 25, 2016)
+-------------------------------
+	   Problem:  Change product code for major upgrade
+
+       Cause:   New branch.
+				 
+       Change:   
+	            New request. 
+       Impact:   
+	        579XX, 5706, Mgmt, Umbrella installers.
+			
+version 5.0.50 (July 28, 2016)
+-------------------------------
+	   Problem:  Add 579XX storage support
+
+       Cause:   Driver support was not there in driver installer.
+				 
+       Change:   
+	            Feature request supported  
+       Impact:   
+	        579XX driver installer.
+			
+version 5.0.31 (June 29, 2016)
+-------------------------------
+	   Problem:  Add diag support for 579XX family
+
+       Cause:   Driver support was not there in driver installer.
+				 
+       Change:   
+	            Feature request supported  
+       Impact:   
+	        579XX driver installer.
+			
+version 5.0.30 (June 27, 2016)
+-------------------------------
+	   Problem:  Cont00087204
+
+       Cause:   Remove QLASP for Win2k16-x64
+				 
+       Change:   
+	            Feature request supported  
+       Impact:   
+	        OEM installer.
+			
+version 5.0.29 (May 31, 2016)
+-------------------------------
+	   Problem:  Cont00086745
+
+       Cause:   Please add driver extraction to umbrella 
+	            installer to include Win2k16-x64
+				 
+       Change:   
+	            New feature request added.  
+       
+       Impact:   
+	        OEM installer.
+			
+version 5.0.28 (May 26, 2016)
+-------------------------------
+	   Problem:  CQ86697 
+
+       Cause:   Need to fix the shortcut.
+				 
+       Change:   
+	            Fixed the shortcut. 
+       
+       Impact:   
+	        OEM installer.
+			
+version 5.0.27 (May 4, 2016)
+-------------------------------
+	   Problem: Cont00086455 
+
+       Cause:   Need to update SilentMgmtApps.txt
+				 
+       Change:   
+	            Updated to removed unused features. 
+       
+       Impact:   
+	        Management installer.
+			
+	   Problem: Cont00086458 
+
+       Cause:   Need to leave out chms for other languages
+				 
+       Change:   
+	            Updated to removed unused files. 
+       
+       Impact:   
+	        Management installer.
+			
+version 5.0.26 (April 25, 2016)
+-------------------------------
+	   Problem: Support Major Upgrade over Serpens
+
+       Cause:   Need to update ProductCode
+				 
+       Change:   
+	            Updated product code for all installers. 
+       
+       Impact:   
+	        Umbrella/Management/Driver installers.
+	   
+version 5.0.25 (April 20, 2016)
+-------------------------------
+       Branched for next project cycle. 
+
+version 5.0.6 (April 07, 2016)
+-------------------------------
+       Problem: MgmtInstaller does not major upgrade 
+
+       Cause:   InstallShield changes were missing 
+	            in the upgrade table.
+				 
+       Change:   
+	        Made the required changes.
+       
+       Impact:   
+	        Management installer.
+			
+version 5.0.5 (March 24, 2016)
+-------------------------------
+       Problem: Cont00085669, Cont00085671 & Cont00085688 
+
+       Cause:   InstallShield changes were missing.
+				 
+       Change:   
+	        Made the required changes.
+       
+       Impact:   
+	        Driver and Management installer.
+			
+version 5.0.4 (March 2, 2016)
+-------------------------------
+       Problem:  Cont00085286 
+
+       Cause:   New feature. 	             
+				 
+       Change:   
+	        Added the requested feature
+       
+       Impact:   
+	        QlgcSetup.exe in Umbrella installers.
+			
+version 5.0.3 (Feb 26, 2016)
+-------------------------------
+       Problem:  Add QCSCLI readme/release notes to the installer.
+
+       Cause:   Change request. 	             
+				 
+       Change:   
+	        Added the requested files.
+       
+       Impact:   
+	        Driver & MgmtApp installers. 
+			
+version 5.0.2 (Feb 16, 2016)
+-------------------------------
+       Problem:  Cont00084987 
+                Expand QCC and QCS strings in the installer.
+
+       Cause:   Change request. 	             
+				 
+       Change:   
+	        Expanded the strings.
+       
+       Impact:   
+	        Driver & MgmtApp installers. 
+
+   Enhancement:
+   ===========
+	Modified MgmtApp installer to exclude QCSGUI and include PortMapper/QLNXAgent/QCSRPCcli.
+	Added QDrv4500 installer (new installer for installing E4 drivers)
+	   
+version 5.0.1 (October 8, 2015)
+-------------------------------
+  1.  Branched from T7.12c.  Added new label for first build.
+
+  2.  New Product Code GUIDs (October 12, 2015)
+
+       Cause:  New GUID
+  
+       Change: New GUID
+    
+       Impact:  Umbrella Installer, Driver Installer, Management Installer	   
+
+
+version 4.0.28 (July 24, 2015)
+-------------------------------
+
+   1.  New GUID for Gold Update 
+
+       Cause:   New GUID. 	             
+                
+				 
+       Change:   
+	        New GUID.
+       
+       Impact:   
+	        Umbrella  Installer.
+
+   2. Problem:  Cont00080993 
+                Previous Driver & MgmtApp installers are remained in Add-Remove 
+                Program (control panel) after upgrading from previous version.
+
+       Cause:   New GUID. 	             
+                
+				 
+       Change:   
+	        New GUID.
+       
+       Impact:   
+	        Driver & MgmtApp installers. 
+
+
+version 4.0.27 (July 16, 2015)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem: Cont00080848 - Windows-Installer: OEM Installer Upgrade still 
+				shows unsigned driver cert dialog
+
+       Cause:   The ProductCode was not updated from the previous Gold Release.
+                
+				 
+       Change:   
+	        Updated the ProductCode.
+       
+       Impact:   
+	        Umbrella  Installer.
+			
+version 4.0.26 (June 5, 2015)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem: Empty popup message when user selects teaming option
+
+       Cause:   Existing check depends on legacy Broadcom Nx1/Nx2 installer. 	             
+                
+				 
+       Change:   
+	        Changed to NX2 teaming detection.
+       
+       Impact:   
+	        Umbrella  Installer. 
+
+version 4.0.25 (April 10, 2015)
+-------------------------------
+
+   Enhancement:
+   ===========
+   1. Change:    Branched from v4.0.10.
+      Impact:    All Installers.
+                              
+
+version 4.0.10 (Mar 17, 2015)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem: CQ78525 
+       		Umbrella project for T7.12 Gold Update for Installer version 19.0.1
+
+       Cause:   New GUID. 	             
+                
+				 
+       Change:   
+	        New GUID.
+       
+       Impact:   
+	        Umbrella  Installer. 
+			
+   2.  Problem:  Cont00078684 
+
+       Cause:    
+	        CLSID changed for QLASP
+       Change:   
+	        Fix the QLASP upgrade
+       Impact:   
+	        OEM Installer and Management Installer.
+
+version 4.0.9 (Feb 26, 2015)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem: CQ77892 
+       		Rel 2015:Win 7:The installer 18.00.3.3 (T7.12b.1.1) does not install the 
+                evbd and NDIS driver for the QLE3442.
+
+       Cause:   New requirement to support 10G adapter on client OS. 	             
+                
+				 
+       Change:   
+	        Added support for 10G driver on client OS.
+       
+       Impact:   
+	        Driver Installer. 
+
+
+version 4.0.8 (Jan 13, 2015)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem: CQ77255 
+       		Remove unsupported OS from umbrella installer extraction.
+		Add W2K2R2 and W2K12R2 folders to umbrella installer extraction.
+       Cause:   Unsupported OS. 	             
+                Missing new OS.                 
+				 
+       Change:   
+	        Remove unsupported OS driver folders.
+		Add new OS driver folders
+                Updated MUP.xml files                   
+       
+       Impact:   
+	        OEM Installer. 
+
+			
+version 4.0.7 (Dec 09, 2014)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem: CQ76386 
+       		Silent downgrade of Umbrella installer doesnt happen.
+       Cause:   Unsupported feature. 	             
+                 
+				 
+       Change:   
+	        Updated silent.txt file to remove this option.                   
+       
+       Impact:   
+	        OEM Installer. 
+
+   2. Problem: CQ76790
+
+		Silent.txt needs to be modified for umbrella installer.
+       Cause:   Legacy command line parameter option. 	             
+                 
+				 
+       Change:   
+	        Changed Command Line parameter option from BACSTRAY to QCSTRAY.
+                Updated Silent.txt file.
+       
+       Impact:   
+	        OEM Installer. 
+
+   3. Problem: CQ77087
+
+		SilentMgmtApps.txt file needs to be updated. 
+       Cause:   Legacy file. 	             
+       Change:   
+	        Update SilentMgmtApps.txt to replace Broadcom with QLogic.
+       
+       Impact:   
+	        Management Installer. 
+
+
+
+   4. Problem: CQ77085
+
+		Under Programs & Features, Help link and contact info
+		still shows "Broadcom" for Mgmt Apps Installer. 
+       Cause:   Legacy file. 	             
+                 
+				 
+       Change:   
+	        Update Mgmt Apps installer link/contact info to QLogic.
+       
+       Impact:   
+	        Management Installer. 
+
+   5. Problem: CQ77090
+		Need to update Release notes for Windows QCS, Linux QCS and QCS CLI
+		to latest version	
+ 
+       Cause:   QCS Management apps version. 	             
+                 
+				 
+       Change:   
+	        Update QCS components and Release notes to latest version.
+       
+       Impact:   
+	        Management Installer. 
+	
+							  
+Version 4.0.6 (Nov 24, 2014)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem:  
+		Fix for localhost connect problem when interop
+                 namespace is deleted.
+       Cause:    	             
+                 Older installer versions deletes interop namespace
+				 
+       Change:   
+	             Reconstruct interop namespace in case it is missing.                   
+       
+       Impact:   
+	             OEM Installer. 
+
+Version 4.0.5 (Oct 22, 2014)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem:  Cont00076387
+		Silent.txt file needs to be updated. It is showing Broadcom
+       Cause:    	             
+                 Incorrect Vendor name
+				 
+       Change:   
+	             Change Vendor name from Broadcom to QLogic.                     
+       
+       Impact:   
+	             OEM Installer. 
+
+   2.  Problem:  Cont00076385
+				 Wrong syntax mentioned in the silent.txt file for Silent installation
+				 of Umbrella installer with "Install Driver only with log file"
+       Cause:    	             
+                 Incorrect command line syntax
+				 
+       Change:   
+	             Update Driver only with log file command line option.                     
+       
+       Impact:   
+	             OEM Installer. 
+
+   3.  Problem:  Cont00076225
+				 Post Split QLogic Umbrella installer generates Driver folder BDrv5706 after installation
+       Cause:    	             
+                 Driver folder name is still referred to Broadcom driver
+				 
+       Change:   
+	             Change Driver folder name From BDrv5706 to QDrivers.                  
+       
+       Impact:   
+	             OEM Installer.  				 
+  Enhancement:
+  ===========  
+  1. Change:    iSCSI Crash Dump Driver binary name change from bnxcd.sys to qnxcd.sys
+
+      Impact:    OEM Installer.				 
+Version 4.0.4 (Oct 15, 2014)
+-------------------------------
+   Enhancement:
+   ===========
+   1. Change:    Updates silent.txt file.
+      Impact:    All Installers.
+
+Version 4.0.3 (Oct 08, 2014)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem:  Cont00075667
+                 
+                 Broadcom branch still present in Umbrella Installer
+       Silent.txt file needs to be updated. It is showing Broadcom
+
+   2.  Problem:  Cont00076167
+                 
+                     Post Split Qlogic Umbrella Installer shows QLASP description
+                     as Broadcom Adv. Server Program
+       Cause:    	             
+                     Legacy QLASP teaming option description
+				 
+       Change:   
+	             Change feature description name from Broadcom to QLogic.                     
+       
+       Impact:   
+	             OEM Installer.
+
+  
+  Enhancement:
+  ===========  
+  1. Change:    QLogic Teaming migration tool folder/binary name to QLTM
+
+      Impact:    OEM Installer. 
+
+Version 4.0.2 (Sep 22, 2014)
+-------------------------------
+
+   Fixes:
+   =====
+   1.  Problem:  Cont00075742
+                 
+                 BACS/QLACS icons not added to the tray if either one is installed secondly
+       Cause:    
+	             The window name by which we look for QLACSTray.exe process was rebranded.
+				 
+       Change:   
+	             Change BascsTrayD to QLascsTrayD.
+       Impact:   
+	             OEM Installer.
+							  
+Version 4.0.1 (Sep 05, 2014)
+-------------------------------
+
+   Enhancement:
+   ===========
+   1. Change:    QLogic rebranded installer.
+      Impact:    All Installers.

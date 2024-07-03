@@ -1,0 +1,128 @@
+.\" Copyright (c) 2018-2022, Intel Corporation
+.\" All rights reserved.
+.\"
+.\" Redistribution and use in source and binary forms of the Software, with or
+.\" without modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright notice,
+.\"    this list of conditions and the following disclaimer.
+.\"
+.\" 2. Redistributions in binary form must reproduce the above copyright notice,
+.\"    this list of conditions and the following disclaimer in the documentation
+.\"    and/or other materials provided with the distribution.
+.\"
+.\" 3. Neither the name of the Intel Corporation nor the names of its
+.\"    contributors may be used to endorse or promote products derived from
+.\"    this Software without specific prior written permission.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+.\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+.\" LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+.\" CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+.\" SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+.\" INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+.\" CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+.\" ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+.\" POSSIBILITY OF SUCH DAMAGE.
+.\"
+.\" * Other names and brands may be claimed as the property of others.
+.\"
+.\" $FreeBSD: src/share/man/man4/iavf.4
+.\"
+.Dd March 14, 2022
+.Dt iavf 4
+.Os
+.Dd March 14, 2022
+.Dt IAVF 4
+.Os
+.Sh NAME
+.Nm iavf
+.Nd "Intel(R) Ethernet Adaptive Virtual Function Driver for the FreeBSD* operating system"
+.Sh SYNOPSIS
+.Cd "device iavf"
+.Sh DESCRIPTION
+The
+.Nm
+driver provides virtualization support for Intel(R) Ethernet devices based on the
+Intel(R) Ethernet 800 Series and Intel(R) Ethernet 700 Series.
+.Pp
+For questions related to hardware requirements, refer to the documentation
+supplied with your adapter.
+.Pp
+Support for Jumbo Frames is provided via the interface MTU setting.
+Selecting an MTU larger than 1500 bytes with the
+.Xr ifconfig 8
+utility configures the adapter to receive and transmit Jumbo Frames.
+The maximum MTU setting for Jumbo Frames is 9706. This value coincides
+with the maximum Jumbo Frames size of 9728.
+This driver version supports VLANs.
+For information on enabling VLANs, see the
+.Pa README .
+NOTE that The
+.Nm
+Driver is only used by means of SR-IOV, normally in a VM on a hosting server.
+.Pp
+Offloads are also controlled via the interface, for instance, checksumming for
+both IPv4 and IPv6 can be set and unset, TSO4 and/or TSO6, and finally LRO can
+be set and unset.
+.Pp
+For more information on configuring this device, see
+.Xr ifconfig 8 .
+.Sh LOADER TUNABLES
+Tunables can be set at the
+.Xr loader 8
+prompt before booting the kernel or stored in
+.Xr loader.conf 5 .
+See the
+.Xr iflib 4 .
+man page for more information on using iflib sysctl variables as tunables.
+.Bl -tag -width indent
+.It Va hw.iavf.ringsz
+Set the number of descriptors in the rings. Note that this
+changes BOTH the TX and RX rings; they cannot be set independently.
+This tunable isn't available if using iflib.
+.It Va hw.iavf.max_queues
+Set the number of queues (each a TX/RX pair) for the port. This
+allows one to override the autocalculation if it's set to 0.
+This tunable isn't available if using iflib.
+.It Va hw.iavf.txbrsz
+Set the size of the buff ring used by the transmit side of the
+stack. We have found that it is necessary to have it quite large
+to get UDP to perform well.
+.It Va hw.iavf.dynamic_rx_itr
+The dynamic RX interrupt control. Set to 1 to enable.
+.It Va hw.iavf.dynamic_tx_itr
+The dynamic TX interrupt control. Set to 1 to enable.
+.It Va hw.iavf.rx_itr
+The RX interrupt rate value.
+.It Va hw.iavf.tx_itr
+The TX interrupt rate value.
+.El
+.Pp
+.Sh SUPPORT
+For additional information regarding building and installation, see the
+.Pa README
+included with the driver.
+For general information, go to the Intel support website at:
+.Pa http://www.intel.com/support/
+
+.Pp
+If an issue is identified with the released source code on a supported kernel with a supported adapter, email the specific information related to the issue to freebsd@intel.com
+.Sh SEE ALSO
+.Xr arp 4 ,
+.Xr netintro 4 ,
+.Xr ng_ether 4 ,
+.Xr vlan 4 ,
+.Xr ifconfig 8
+.Sh HISTORY
+The
+.Nm
+device driver first appeared in
+.Fx 11.1 .
+.Sh AUTHORS
+The
+.Nm
+driver was written by
+.An Intel Corporation Aq freebsd@intel.com

@@ -1,0 +1,437 @@
+# txtsetup.oem -  for the LSI RAID family of SAS RAID Controllers
+#
+# ***********************************************************************
+#                                                                       *
+#   Copyright 2005 LSI Corp.  All rights reserved.                      *
+#                                                                       *
+#   This file is property of LSI Corp. and is licensed for              *
+#   use as is.  The receipt of or posession of this file does not       *
+#   convey any rights to modify its contents, in whole, or in part,     *
+#   without the specific written consent of LSI Corp.                   *
+#                                                                       *
+# ***********************************************************************
+#
+# format for txtsetup.oem.
+#
+# General format:
+#
+# [section]
+# key = value1,value2,...
+#
+#
+# The hash ('#') introduces a comment.
+# Strings with embedded spaces, commas, or hashes should be double-quoted
+#
+
+[Disks]
+
+d1 = "LSI MegaRAID SAS RAID Controller Driver (Windows 2000)", \megasas.sys, \
+d2 = "LSI MegaRAID SAS RAID Controller Driver (Server 2003 32-bit)", \msas2k3.sys, \
+
+[Defaults]
+
+# This section lists the default selection for each 'required'
+# hardware component.  If a line is not present for a component,
+# the default defaults to the first item in the [<component_name>]
+# section (see below).
+#
+# <component_name> is one of computer, display, keyboard, mouse, scsi
+# <id> is a unique <within the component> string to be associated
+#   with an option.
+
+scsi = MEGASAS
+
+
+
+[scsi]
+
+# This section lists the options available for a particular component.
+#
+# <id> is the unique string for the option
+# <description> is a text string, presented to the user in a menu
+# <key_name> gives the name of the key to be created for the component in
+#   HKEY_LOCAL_MACHINE\ControlSet001\Services
+
+
+MEGASAS	= "LSI MegaRAID SAS RAID Controller Driver (Windows 2000)", megasas
+MSAS2K3 = "LSI MegaRAID SAS RAID Controller Driver (Server 2003 32-bit)", msas2k3
+
+
+[HardwareIds.scsi.MEGASAS]
+
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10011000", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10021000", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10031000", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10041000", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_20041000", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_20051000", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_100C1000", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_100D1000", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10081000", "megasas"
+id = "PCI\VEN_1000&DEV_0413&SUBSYS_10051000", "megasas"
+id = "PCI\VEN_1000&DEV_0409&SUBSYS_10091000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10061000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_100A1000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_100E1000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_100F1000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10101000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10111000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10121000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10131000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10141000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10151000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10161000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10171000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10181000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10191000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_101A1000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_101B1000", "megasas"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03631014", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03641014", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03651014", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03791014", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03A21014", "megasas"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_002F1170", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_00361170", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_00341170", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_824D1043", "megasas"
+
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10811734", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10a31734", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_82871033", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_835A1033", "megasas"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10F91734", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_114B1734", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_11021734", "megasas"
+
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10018086", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10038086", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_35008086", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_35018086", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_35048086", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_34908086", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_34CC8086", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_34CD8086", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_35078086", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_30161054", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_30191054", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10068086", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_100A8086", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10108086", "megasas"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10088086", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10138086", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10218086", "megasas"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_6B7C17AA", "megasas"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C08015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C18015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C28015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C38015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C48015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C58015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C68015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C78015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C88015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C98015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C01115D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C11115D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C21115D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C31115D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C41115D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C51115D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C61115D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C71115D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C81115D9", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C91115D9", "megasas"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10001458", "megasas"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_21631FCA", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_000318A1", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03AC1014", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_35058086", "megasas"
+id = "PCI\VEN_1000&DEV_0078&SUBSYS_92501000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92551000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92751000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92801000", "megasas"
+id = "PCI\VEN_1000&DEV_0078&SUBSYS_92701000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92601000", "megasas"
+id = "PCI\VEN_1000&DEV_0078&SUBSYS_92511000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92561000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92611000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_34E48086", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10211000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_836E1033", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_D20219E5", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_35088086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92811000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92631000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92621000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_03B21014", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_03B31014", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_92401000", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_92411000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92641000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92821000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_11761734", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_11771734", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92901000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92608086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92618086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92568086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92808086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92758086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_03C71014", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_92408086", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_92418086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_070015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_040015D9", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_00791137", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_03B11014", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92828086", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_30351054", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_10541000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92771000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92761000", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_000418A1", "megasas"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_000518A1", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_30361054", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_14581002", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_1F201462", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_350C8086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_350B8086", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_350D8086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92841000", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92908086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92768086", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_84731043", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_00011BAA", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_843B1043", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_84711043", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_11B31734", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_11B41734", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_00011BD4", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_00021BD4", "megasas"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_84731043", "megasas"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_00731137", "megasas"
+id = "PCI\VEN_1000&DEV_0078", "megasas"
+id = "PCI\VEN_1000&DEV_0079", "megasas"
+id = "PCI\VEN_1000&DEV_0073", "megasas"
+
+[HardwareIds.scsi.MSAS2K3]
+
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10011000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10021000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10031000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10041000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_20041000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_20051000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_100C1000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_100D1000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10081000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0413&SUBSYS_10051000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0409&SUBSYS_10091000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10061000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_100A1000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_100E1000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_100F1000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10101000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10111000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10121000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10131000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10141000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10151000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10161000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10171000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10181000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10191000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_101A1000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_101B1000", "msas2k3"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03631014", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03641014", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03651014", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03791014", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03A21014", "msas2k3"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_002F1170", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_00361170", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_00341170", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_824D1043", "msas2k3"
+
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10811734", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10a31734", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_82871033", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_835A1033", "msas2k3"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10F91734", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_114B1734", "msas2k3"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_11021734", "msas2k3"
+
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10018086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10038086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_35008086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_35018086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_35048086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_34908086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_34CC8086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_34CD8086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_35078086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_30161054", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_30191054", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10068086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_100A8086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10108086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0411&SUBSYS_10088086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10138086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10218086", "msas2k3"
+
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_6B7C17AA", "msas2k3"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C08015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C18015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C28015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C38015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C48015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C58015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C68015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C78015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C88015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C98015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C01115D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C11115D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C21115D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C31115D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C41115D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C51115D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C61115D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C71115D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C81115D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_C91115D9", "msas2k3"
+
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10001458", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_21631FCA", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_000318A1", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_03AC1014", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_35058086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0078&SUBSYS_92501000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92551000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92751000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92801000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0078&SUBSYS_92701000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92601000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0078&SUBSYS_92511000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92561000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92611000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_34E48086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_10211000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_836E1033", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_D20219E5", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_35088086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92631000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92621000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92811000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92811000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92631000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92621000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_03B21014", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_03B31014", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_92401000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_92411000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92641000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92821000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_11761734", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_11771734", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92901000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92608086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92618086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92568086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92808086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92758086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_03C71014", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_92408086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_92418086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_070015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_040015D9", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_00791137", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_03B11014", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92828086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_30351054", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_10541000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92771000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92761000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_000418A1", "msas2k3"
+id = "PCI\VEN_1000&DEV_0060&SUBSYS_000518A1", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_30361054", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_14581002", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_1F201462", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_350C8086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_350B8086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_350D8086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92841000", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92908086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_92768086", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_84731043", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_00011BAA", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_843B1043", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_84711043", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_11B31734", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_11B41734", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_00011BD4", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_00021BD4", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_84731043", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_00731137", "msas2k3"
+id = "PCI\VEN_1000&DEV_0078", "msas2k3"
+id = "PCI\VEN_1000&DEV_0079", "msas2k3"
+id = "PCI\VEN_1000&DEV_0073", "msas2k3"
+
+# This section lists the files that should be copied if the user
+# selects a particular component option.
+#
+# <file_type> is one of driver, port, class, dll, hal, inf, or detect.
+#   See below.
+# <source_disk> identifies where the file is to be copied from, and must
+#   match en entry in the [Disks] section.
+# <filename> is the name of the file. This will be appended to the
+#   directory specified for the disk in the [Disks] section to form the
+#   full path of the file on the disk.
+
+[Files.scsi.MEGASAS]
+
+driver  = d1, megasas.sys, megasas
+inf     = d1, oemsetup.inf, megasas
+inf     = d1, nodev.inf
+catalog = d1, megasas.cat
+
+[Files.scsi.MSAS2K3]
+
+driver  = d2, msas2k3.sys, msas2k3
+inf     = d2, oemsetup.inf, msas2k3
+inf     = d2, nodev.inf
+catalog = d2, megasas.cat
+
+# This section specifies values to be set in the registry for
+# particular component options.  Required values in the services\xxx
+# key are created automatically -- use this section to specify additional
+# keys to be created in services\xxx and values in services\xxx and
+# services\xxx\yyy.
+#
+# <key_name> is relative to the services node for this device.
+#   If it is empty, then it refers to the services node.
+#   If specified, the key is created first.
+# <value_name> specifies the value to be set within the key
+# <value_type> is a string like REG_DWORD.  See below.
+# <value> specifies the actual value; its format depends on <value_type>
+
+[Config.megasas]
+value = "", Tag, REG_DWORD, 20
+
+[Config.msas2k3]
+value=parameters\PnpInterface,5, REG_DWORD,1 
+value = "", Tag, REG_DWORD, 20

@@ -1,0 +1,31 @@
+                        ============================
+                         V E R S I O N    N O T E S
+                        ============================
+
+                 QLogic NetXtreme II GigE Driver Installer 
+			  For Windows 2008/2012/2016                               
+                 Copyright (c)2014-2017 QLogic Corporation
+                          All rights reserved.
+
+This version.txt shows the version of the installer, 
+as well as the component versions included within the installer.
+Please see the release.txt for changes to the installer.
+
+			
+Version 18.80.6.6  (08/31/17)
+------------------------------
+   - Certified Cat files.
+   Drivers in this release include:
+   ******************************** 
+   bxdiag      v7.12.1.0     QLogic NetXtreme II GigE Diagnostic Driver
+   bxvbd       v7.12.32.0    VBD 1G driver for Windows 2008 and 2012
+   evbd        v7.13.116     VBD 10G driver for Windows 2008 and 2012
+   bxfcoe      v7.14.15.0    QLogic NetXtreme II FCoE Offload Driver
+   bnxfcd      v7.13.2.0     QLogic NetXtreme Unified FCoE Crash Dump Driver
+   bxnd        v7.13.104.0f  NDIS 6.0 driver for Windows 2008 and 2012
+   bxois       v7.14.4.0     QLogic NetXtreme II Offload iSCSI (ois)
+   qnxcd       v7.13.2.0     QLogic NetXtreme Unified iSCSI Crash Dump Driver
+
+
+
+	
